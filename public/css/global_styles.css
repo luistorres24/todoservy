@@ -1,0 +1,89 @@
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control{
+    border-radius: 1px;
+}
+
+.form-group label {
+    text-align: left;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+}
+
+.modal-header{
+    border-bottom: 1px solid #ebedf2;
+    padding: 2px 15px;
+}
+
+.modal-content{
+    border-radius: 4px;
+    box-shadow: 0 9px 10px 1px rgba(18,152,182,0.75);
+}
+
+.modal-body{
+    padding: 30px;
+}
+
+.modal-footer{
+    border-top: 0;
+}
+
+.btn-crear-negocio{
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1c79fe;
+    border-color: #1c79fe;
+    font-size: 13px;
+}
+.btn-crear-negocio-label {
+    font-size: 22px;
+}
+
+.btn-cerrar-modal{
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    font-size: 13px;
+}
+.btn-cerrar-modal:hover{
+    background-color: #d7ab0f;
+    border-color: #d7ab0f;
+}
+
+.btn-cerrar-modal-label {
+    font-size: 15px;
+}
+
+.btn-agregar-foto{
+    color: rgba(18, 152, 182, 0.9);
+    cursor: pointer;
+    font-size: 12px!important;
+}
+
+.form-control{
+    border-color: rgba(18, 152, 182, 0.8);
+}
+
+.form-control:focus{
+    outline: none;
+    border-color: #1c79fe;
+    box-shadow: 0 0 3px #1c79fe;
+}
+
+.form-control::placeholder{
+    font-size: 14px;
+    color: rgba(18, 152, 182, 0.4);
+}
+
+
