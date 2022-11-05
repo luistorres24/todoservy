@@ -2,46 +2,41 @@ import {createApp} from "vue/dist/vue.esm-bundler";
 import axios from "axios";
 
 const app = createApp({
+    created() {
+        // console.log(this.negocio.id)
+
+        this.traerReviewsNegocio();
+    },
     data(){
         return {
-            previewImage: null,
-            formNegocio:{
-                nombre: null,
-                telefono: null,
-                acerca_de: null,
-                foto: null,
+            negocio: {
+                id: negocio_id,
+                telefono: negocio_telefono,
+                acerca_de: negocio_acerca_de,
+                foto: negocio_foto,
+            },
+            reviews: [],
 
-            }
         }
     },
     methods:{
-        uploadImage(e){
-            const image = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = e =>{
-                this.previewImage = e.target.result;
-                // console.log(this.previewImage);
-            };
-        },
-        crearNegocio(){
 
-            if(this.previewImage !== null){
+        traerReviewsNegocio(){
+            axios.get('/traer-review-negocio',{
+                params:{
+                    id: this.negocio.id
+                }
+            }).then( response => {
 
-                this.formNegocio.foto = this.previewImage;
+                console.log("si entro bien")
 
-            }
-            axios.post('/crear-negocio', this.formNegocio).then( response => {
-
-                console.log(response);
             }).catch( error => {
 
 
-            })
+            });
+        },
 
-        }
-
-    }
+    },
 });
 
 app.mount('#negocios_vue')

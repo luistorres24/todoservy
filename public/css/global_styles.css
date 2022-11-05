@@ -42,8 +42,44 @@
     border-color: #1c79fe;
     font-size: 13px;
 }
+
+.btn-editar-negocio{
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #28a745;
+    border-color: #28a745;
+    font-size: 13px;
+    /*color: white;*/
+}
+
 .btn-crear-negocio-label {
     font-size: 22px;
+}
+
+a[href="#"]{
+    text-decoration: none;
+    padding: 0 2px;
+}
+
+.icon-edit{
+    font-size: 22px;
+    color: #1c79fe;
+}
+
+.icon-edit:hover{
+    color: #1761ca;
+}
+
+.icon-delete{
+    font-size: 22px;
+    color: #f11818;
+}
+
+.icon-delete:hover{
+    color: #921010;
 }
 
 .btn-cerrar-modal{
@@ -85,5 +121,22 @@
     font-size: 14px;
     color: rgba(18, 152, 182, 0.4);
 }
+
+.card{
+    cursor: pointer;
+}
+
+.card-img{
+    max-width: 100px;
+    margin: auto;
+}
+
+@media (max-width: 600px)  {
+    .card-img{
+        max-width: 100px;
+        margin: 10px auto 0;
+    }
+}
+
 
 

@@ -21,8 +21,10 @@ export default defineConfig({
 
                 // VUE
                 'resources/js/vue/negocios.js',
+                'resources/js/vue/listado_negocios.js',
+                'resources/js/vue/administrador.js',
                 //
-                // 'public/css/global_styles.css',
+                'public/css/global_styles.css',
             ],
             refresh: true,
         }),

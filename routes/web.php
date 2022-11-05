@@ -17,8 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/negocios', function () {
-    return view('negocios');
+Route::get('/administrador', function () {
+    return view('administrador');
 });
 
+Route::get('/listado-negocios', function () {
+    return view('listado_negocios');
+});
+
+Route::get('/traer-negocios', [\App\Http\Controllers\NegociosController::class, 'traerNegocios']);
 Route::post('/crear-negocio', [\App\Http\Controllers\NegociosController::class, 'crearNegocio']);
+Route::post('/editar-negocio/{negocio}', [\App\Http\Controllers\NegociosController::class, 'editarNegocio']);
+Route::delete('/eliminar-negocio/{negocio}', [\App\Http\Controllers\NegociosController::class, 'eliminarNegocio']);
+Route::get('/negocio/{negocio}', [\App\Http\Controllers\NegociosController::class, 'mostrarNegocio']);
+Route::get('/traer-review-negocio', [\App\Http\Controllers\NegociosController::class, 'traerReview']);

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NegocioRequest extends FormRequest
+class EditarNegocioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class NegocioRequest extends FormRequest
     public function rules()
     {
         return [
+            'id' => 'required',
             'nombre' => 'required',
             'acerca_de' => 'required',
             'telefono' => 'required|min:9',
@@ -35,6 +36,7 @@ class NegocioRequest extends FormRequest
     public function messages()
     {
         return [
+            'id.required' => 'El ID es obligatorio',
             'telefono.required' => 'El teléfono es obligatorio',
             'telefono.min' => 'El campo teléfono debe contener al menos 10 caracteres',
             'nombre.required' => 'El campo nombre es obligatorio',
