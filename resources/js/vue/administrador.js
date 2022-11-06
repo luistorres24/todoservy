@@ -51,6 +51,7 @@ const app = createApp({
             }
 
             let formulario = new FormData( document.getElementById('crearNegocioForm') );
+            formulario.append('foto', this.formNegocio.foto);
             // formulario.append('id',this.idMensajeEditar);
 
             // $('#editar_mensaje_form')[0].reset();
@@ -73,6 +74,7 @@ const app = createApp({
             this.formNegocioEditar.acerca_de = negocio.acerca_de;
             this.formNegocioEditar.foto = negocio.foto;
 
+            this.previewImage = null;
             $('#modal-editar').modal('show');
         },
         editarNegocio(){
@@ -82,8 +84,8 @@ const app = createApp({
             }
 
             let formulario = new FormData( document.getElementById('editarNegocioForm') );
-            formulario.append('id',this.formNegocioEditar.id);
-            formulario.append('foto',this.formNegocioEditar.foto);
+            formulario.append('id', this.formNegocioEditar.id);
+            formulario.append('foto', this.formNegocioEditar.foto);
 
             // $('#editar_mensaje_form')[0].reset();
             axios.post('/editar-negocio/' + this.formNegocioEditar.id, formulario).then( response => {

@@ -43,30 +43,38 @@
                                             </div>
 
                                         </div>
-                                        <div class="card card-review">
-                                            <div class="row">
-                                                <div class="col-md-1 text-center" style="display: flex; align-items: center;">
-                                                    <img class="card-img" src="{{ asset('img/user.png') }}" alt="">
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"> Usuario 1</h5>
-                                                        <p class="card-text">
-                                                            Le doy 4 estrellas por qué. En si la app es muy buena pero últimamente tengo problemas. Por qué estoy interesado en unos lotes, pero al momento de enviar mi pregunta al vendedor o negociar.
-                                                            Me sale que error y intento muchas veces pero me sale lo mismo. A si que pedirles el favor si pueden corregir ese problema. Muchas gracias
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 contenedor-estrellas">
-                                                    <i class="cil-star"></i>
-                                                    <i class="cil-star"></i>
-                                                    <i class="cil-star"></i>
-                                                    <i class="cil-star"></i>
-                                                    <i class="cil-star"></i>
-                                                </div>
+                                        <template v-if="calificaciones.length === 0">
 
+                                            <div style="padding: 0 5px;">
+                                                <span style="color: #808080"> - El negocio aún no tiene calificaciones </span>
                                             </div>
-                                        </div>
+
+                                        </template>
+                                        <template v-for="calificacion in calificaciones">
+                                            <div class="card card-review mb-2">
+                                                <div class="row">
+                                                    <div class="col-md-1 text-center" style="display: flex; align-items: center;">
+                                                        <img class="card-img" src="{{ asset('img/user.png') }}" alt="">
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title" v-text="calificacion.nombre"></h5>
+                                                            <p class="card-text" v-text="calificacion.comentario"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2 contenedor-estrellas">
+                                                        <i class="cil-star"></i>
+                                                        <i class="cil-star"></i>
+                                                        <i class="cil-star"></i>
+                                                        <i class="cil-star"></i>
+                                                        <i class="cil-star"></i>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </template>
+
+
 
                                     </div>
                                 </div>
@@ -89,19 +97,24 @@
                     {{--                        </div>--}}
                     <div class="modal-body">
                         <div class="row">
-                            <form id="crearNegocioForm">
+                            <form id="crearCalificacionForm">
                                 <div class="form-group col-12">
                                     <label for="nombre" class="form-control-label">Nombre</label>
                                     <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre">
                                 </div>
 
                                 <div class="form-group col-12">
-                                    <label for="Comentario" class="form-control-label">Comentario</label>
-                                    <textarea name="Comentario" class="form-control" rows="4" style="resize: none;" placeholder="Cuentanos tu opinión"></textarea>
+                                    <label for="comentario" class="form-control-label">Comentario</label>
+                                    <textarea name="comentario" class="form-control" rows="4" style="resize: none;" placeholder="Cuentanos tu opinión"></textarea>
                                 </div>
 
                                 <div class="form-group col-12">
-                                    <label for="acerca_de" class="form-control-label">Rating</label>
+                                    <label for="calificacion" class="form-control-label">Calificacion</label>
+                                    <input type="number" class="form-control" name="calificacion" placeholder="Calificacion">
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <label for="rating" class="form-control-label">Rating</label>
                                     <div class="contenedor-estrellas">
                                         <i class="cil-star"></i>
                                         <i class="cil-star"></i>
@@ -112,7 +125,7 @@
                                 </div>
 
                                 <div class="form-group col-12">
-                                    <button type="button" class="btn btn-primary btn-crear-negocio">GUARDAR
+                                    <button type="button" class="btn btn-primary btn-crear-negocio" @click="crearCalificacion"> GUARDAR
                                         <i class="btn-crear-negocio-label cil-arrow-right"></i>
                                     </button>
                                 </div>

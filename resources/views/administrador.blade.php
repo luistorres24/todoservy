@@ -135,7 +135,7 @@
                                         <span class="btn-agregar-foto" style="display: flex; align-items: center">
                                             <i class="cil-paperclip"></i>
                                             <label style="margin: 0 5px" for="upload-foto" ref="upload-foto" class="btn-agregar-foto" v-text="previewImage == null ? 'Agregar Foto' : 'Cambiar Foto'"></label>
-                                            <input style="display: none" id="upload-foto" type="file" accept="image/jpeg" class="btn-agregar-foto btn-file" @change=uploadImage>
+                                            <input style="display: none" id="upload-foto" type="file" accept="image/*" class="btn-agregar-foto btn-file" @change=uploadImage>
                                             <img :src="previewImage" class="uploading-image"  alt="" style="width: 25px"/>
                                         </span>
 
@@ -185,7 +185,7 @@
                                         <span class="btn-agregar-foto" style="display: flex; align-items: center">
                                             <i class="cil-paperclip"></i>
                                             <label style="margin: 0 5px" for="upload-foto-editar" ref="upload-foto" class="btn-agregar-foto" v-text="formNegocioEditar.foto == null ? 'Agregar Foto' : 'Cambiar Foto'"></label>
-                                            <input style="display: none" id="upload-foto-editar" type="file" accept="image/jpeg" class="btn-agregar-foto btn-file" @change=uploadImage>
+                                            <input style="display: none" id="upload-foto-editar" type="file" accept="image/*" class="btn-agregar-foto btn-file" @change=uploadImage>
                                             <img :src="previewImage" class="uploading-image"  alt="" style="width: 25px"/>
                                         </span>
 

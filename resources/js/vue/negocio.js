@@ -5,7 +5,7 @@ const app = createApp({
     created() {
         // console.log(this.negocio.id)
 
-        this.traerReviewsNegocio();
+        this.traerCalificacionesNegocio();
     },
     data(){
         return {
@@ -16,20 +16,20 @@ const app = createApp({
                 acerca_de: negocio_acerca_de,
                 foto: negocio_foto,
             },
-            reviews: [],
+            calificaciones: [],
 
         }
     },
     methods:{
 
-        traerReviewsNegocio(){
+        traerCalificacionesNegocio(){
             axios.get('/traer-calificacion-negocio',{
                 params:{
                     id: this.negocio.id
                 }
             }).then( response => {
 
-                console.log("si entro bien")
+                this.calificaciones = response.data;
 
             }).catch( error => {
 
@@ -37,9 +37,27 @@ const app = createApp({
             });
         },
 
-
         abrirModalReview(){
             $('#addReview').modal('show');
+        },
+
+        crearCalificacion(){
+
+            let formulario = new FormData( document.getElementById('crearCalificacionForm') );
+            formulario.append('id_negocio', this.negocio.id);
+
+
+            axios.post('/crear-calificacion-negocio', formulario).then( response => {
+
+
+                this.traerCalificacionesNegocio();
+
+                $('#crearCalificacionForm')[0].reset();
+                $('#addReview').modal('hide');
+            }).catch( error => {
+
+
+            });
         }
 
     },

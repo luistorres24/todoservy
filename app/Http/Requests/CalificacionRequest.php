@@ -38,7 +38,7 @@ class CalificacionRequest extends FormRequest
             'id_negocio.required' => 'Debe enviar el campo ID de negocio',
             'nombre.required' => 'El campo nombre es obligatorio',
             'comentario.required' => 'El campo comentario es obligatorio',
-            'calificacion.required' => 'El campo foto es obligatorio',
+            'calificacion.required' => 'El campo calificacion es obligatorio',
         ];
     }
 }

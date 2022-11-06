@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CalificacionRequest;
 use App\Http\Requests\EditarNegocioRequest;
 use App\Http\Requests\NegocioRequest;
+use App\Models\Calificacion;
 use App\Models\Negocio;
 use Exception;
 use Illuminate\Http\Request;
@@ -25,12 +26,23 @@ class NegociosController extends Controller
     }
 
     public function traerCalificacion(Request $request){
-        return $request->id;
+
+        $calificaciones = Calificacion::where('id_negocio', $request->id)->get();
+
+        return response()->json($calificaciones);
+
     }
 
     public function crearCalificacion(CalificacionRequest $request)
     {
+        Calificacion::create([
+            'id_negocio'   => $request->id_negocio,
+            'nombre'       => $request->nombre,
+            'comentario'   => $request->comentario,
+            'calificacion' => $request->calificacion,
+        ]);
 
+        return response()->json('Calificacion creada correctamente');
     }
 
     public function crearNegocio(NegocioRequest $request)
@@ -44,6 +56,7 @@ class NegociosController extends Controller
         ]);
 
         if(!$this->guardarFoto($negocio, $request->foto)){
+            $negocio->delete();
             return response()->json('No se ha podido guardar la foto', 422);
         }
 
