@@ -138,5 +138,31 @@ a[href="#"]{
     }
 }
 
+.carta-individual{
+    padding: 20px;
+}
+
+.header-review{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.icon-agregar-review{
+    color: rgb(13, 202, 240);
+    border-radius: 20px;
+    border: 1px rgb(13, 202, 240) solid;
+}
+
+.card-review{
+    padding: 20px 40px;
+}
+
+.contenedor-estrellas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 

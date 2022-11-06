@@ -11,6 +11,7 @@ const app = createApp({
         return {
             negocio: {
                 id: negocio_id,
+                nombre: negocio_nombre,
                 telefono: negocio_telefono,
                 acerca_de: negocio_acerca_de,
                 foto: negocio_foto,
@@ -22,7 +23,7 @@ const app = createApp({
     methods:{
 
         traerReviewsNegocio(){
-            axios.get('/traer-review-negocio',{
+            axios.get('/traer-calificacion-negocio',{
                 params:{
                     id: this.negocio.id
                 }
@@ -35,6 +36,11 @@ const app = createApp({
 
             });
         },
+
+
+        abrirModalReview(){
+            $('#addReview').modal('show');
+        }
 
     },
 });

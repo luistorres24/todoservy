@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CalificacionRequest;
 use App\Http\Requests\EditarNegocioRequest;
 use App\Http\Requests\NegocioRequest;
 use App\Models\Negocio;
@@ -23,8 +24,13 @@ class NegociosController extends Controller
         return view('negocio', compact('negocio'));
     }
 
-    public function traerReview(Request $request){
+    public function traerCalificacion(Request $request){
         return $request->id;
+    }
+
+    public function crearCalificacion(CalificacionRequest $request)
+    {
+
     }
 
     public function crearNegocio(NegocioRequest $request)

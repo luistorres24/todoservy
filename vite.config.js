@@ -20,7 +20,7 @@ export default defineConfig({
                 'resources/js/app.js',
 
                 // VUE
-                'resources/js/vue/negocios.js',
+                'resources/js/vue/negocio.js',
                 'resources/js/vue/listado_negocios.js',
                 'resources/js/vue/administrador.js',
                 //

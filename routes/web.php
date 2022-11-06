@@ -30,4 +30,5 @@ Route::post('/crear-negocio', [\App\Http\Controllers\NegociosController::class, 
 Route::post('/editar-negocio/{negocio}', [\App\Http\Controllers\NegociosController::class, 'editarNegocio']);
 Route::delete('/eliminar-negocio/{negocio}', [\App\Http\Controllers\NegociosController::class, 'eliminarNegocio']);
 Route::get('/negocio/{negocio}', [\App\Http\Controllers\NegociosController::class, 'mostrarNegocio']);
-Route::get('/traer-review-negocio', [\App\Http\Controllers\NegociosController::class, 'traerReview']);
+Route::get('/traer-calificacion-negocio', [\App\Http\Controllers\NegociosController::class, 'traerCalificacion']);
+Route::post('/crear-calificacion-negocio', [\App\Http\Controllers\NegociosController::class, 'crearCalificacion']);
