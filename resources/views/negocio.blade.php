@@ -63,11 +63,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 contenedor-estrellas">
-                                                        <i class="cil-star"></i>
-                                                        <i class="cil-star"></i>
-                                                        <i class="cil-star"></i>
-                                                        <i class="cil-star"></i>
-                                                        <i class="cil-star"></i>
+                                                        <star-rating :rating="calificacion.calificacion" :star-size="20" :read-only="true" :increment="0.01"> </star-rating>
                                                     </div>
 
                                                 </div>
@@ -110,18 +106,7 @@
 
                                 <div class="form-group col-12">
                                     <label for="calificacion" class="form-control-label">Calificacion</label>
-                                    <input type="number" class="form-control" name="calificacion" placeholder="Calificacion">
-                                </div>
-
-                                <div class="form-group col-12">
-                                    <label for="rating" class="form-control-label">Rating</label>
-                                    <div class="contenedor-estrellas">
-                                        <i class="cil-star"></i>
-                                        <i class="cil-star"></i>
-                                        <i class="cil-star"></i>
-                                        <i class="cil-star"></i>
-                                        <i class="cil-star"></i>
-                                    </div>
+                                    <star-rating ref="inputCalificacion" :increment="0.1" :rounded-corners="true" ></star-rating>
                                 </div>
 
                                 <div class="form-group col-12">

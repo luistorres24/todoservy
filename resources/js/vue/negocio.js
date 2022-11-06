@@ -1,5 +1,7 @@
 import {createApp} from "vue/dist/vue.esm-bundler";
 import axios from "axios";
+import StarRating from 'vue-star-rating'
+
 
 const app = createApp({
     created() {
@@ -17,6 +19,7 @@ const app = createApp({
                 foto: negocio_foto,
             },
             calificaciones: [],
+            calificacio: 0,
 
         }
     },
@@ -45,7 +48,7 @@ const app = createApp({
 
             let formulario = new FormData( document.getElementById('crearCalificacionForm') );
             formulario.append('id_negocio', this.negocio.id);
-
+            formulario.append('calificacion', this.$refs.inputCalificacion.selectedRating);
 
             axios.post('/crear-calificacion-negocio', formulario).then( response => {
 
@@ -58,9 +61,14 @@ const app = createApp({
 
 
             });
+        },
+        prueba(){
+            console.log("jejej")
         }
 
     },
 });
 
+
+app.component('star-rating', StarRating);
 app.mount('#negocios_vue')

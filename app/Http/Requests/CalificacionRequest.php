@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\calificacionValida;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CalificacionRequest extends FormRequest
@@ -27,7 +28,7 @@ class CalificacionRequest extends FormRequest
             'id_negocio' => 'required',
             'nombre' => 'required',
             'comentario' => 'required',
-            'calificacion' => 'required',
+            'calificacion' => ['required', 'string', new calificacionValida],
         ];
 
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('id_negocio');
             $table->string('nombre_usuario');
             $table->string('comentario');
-            $table->integer('calificacion');
+            $table->float('calificacion');
             $table->timestamps();
         });
     }
