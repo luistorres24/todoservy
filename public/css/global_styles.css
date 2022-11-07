@@ -282,6 +282,15 @@ table, th, td {
         display: block!important;
     }
 }
+.header-sticky-administrador{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+
+.contenedor-mobile-administrador{
+    padding-top: 5rem;
+}
 
 
 

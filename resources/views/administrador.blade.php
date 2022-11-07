@@ -11,7 +11,8 @@
 @section('contenido')
     <div id="admninistrador_vue">
 
-        <header class="header header-sticky mb-4">
+
+        <header class="header header-sticky-administrador mb-4">
             <div class="container-fluid">
                 <nav aria-label="breadcrumb">
 
@@ -25,7 +26,7 @@
         </header>
 
 
-        <div class="body flex-grow-1 px-3">
+        <div class="body flex-grow-1 px-3 contenedor-mobile-administrador">
             <div class="container-lg">
                 <div class="row">
                     <div class="col-md-12">
@@ -112,7 +113,7 @@
 
         <!-- Modal Crear Negocio-->
         <div class="modal fade" id="staticBackdrop" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     {{--                        <div class="modal-header">--}}
                     {{--                            <span class="modal-title" id="staticBackdropLabel" style="color: black">Crear Nuevo Negocio</span>--}}
@@ -169,7 +170,7 @@
 
         <!-- Modal Editar Negocio-->
         <div class="modal fade" id="modal-editar" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="row">
