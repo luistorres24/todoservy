@@ -10,6 +10,7 @@ use App\Models\Negocio;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\isEmpty;
 
 class NegociosController extends Controller
 {
@@ -29,16 +30,21 @@ class NegociosController extends Controller
 
         $calificaciones = Calificacion::where('id_negocio', $request->id)->get();
 
-        $total_calificaciones = 0;
+        $total_calificaciones = count($calificaciones);
+        $total_acumulado_calificaciones = 0;
+        $promedio = 0;
 
-        foreach($calificaciones as $calificacion){
-            $total_calificaciones += $calificacion->calificacion;
+        if($total_calificaciones > 0){
+            foreach($calificaciones as $calificacion){
+                $total_acumulado_calificaciones += $calificacion->calificacion;
+            }
+            $promedio = $total_acumulado_calificaciones/$total_calificaciones;
         }
-        $promedio = $total_calificaciones/count($calificaciones);
+
 
         return response()->json([
            'calificaciones' => $calificaciones,
-           'total_calificaciones' => count($calificaciones),
+           'total_calificaciones' => $total_calificaciones,
            'promedio_calificaciones' => round($promedio,1),
         ]);
 
@@ -58,6 +64,13 @@ class NegociosController extends Controller
 
     public function crearNegocio(NegocioRequest $request)
     {
+        if($request->foto == null){
+            return response()->json([
+                'errors' => [
+                    'foto' => ['Debe agregar una foto']
+                ]
+            ], 422);
+        }
 
         $negocio = Negocio::create([
             'nombre' => $request->nombre,
@@ -68,7 +81,11 @@ class NegociosController extends Controller
 
         if(!$this->guardarFoto($negocio, $request->foto)){
             $negocio->delete();
-            return response()->json('No se ha podido guardar la foto', 422);
+            return response()->json([
+                'errors' => [
+                    'foto' => ['No se ha podido guardar la foto']
+                ]
+            ], 422);
         }
 
         return response()->json('Negocio creado correctamente');
@@ -77,13 +94,26 @@ class NegociosController extends Controller
     public function editarNegocio(EditarNegocioRequest $request, Negocio $negocio)
     {
 
+        if($request->foto == null){
+            return response()->json([
+                'errors' => [
+                    'foto' => ['Debe agregar una foto']
+                ]
+            ], 422);
+        }
+
         $negocio->nombre = $request->nombre;
         $negocio->acerca_de = $request->acerca_de;
         $negocio->telefono = $request->telefono;
         $negocio->save();
 
+        if($request->foto_original == 'false')
         if(!$this->guardarFoto($negocio, $request->foto)){
-            return response()->json('No se ha podido guardar la foto', 422);
+            return response()->json([
+                'errors' => [
+                    'foto' => ['No se ha podido guardar la foto']
+                ]
+            ], 422);
         }
 
         return response()->json('Negocio editado correctamente');
@@ -91,6 +121,11 @@ class NegociosController extends Controller
 
     public function eliminarNegocio(Negocio $negocio)
     {
+        $calificaciones = Calificacion::where('id_negocio', $negocio->id)->get();
+
+        foreach($calificaciones as $calificacion){
+            $calificacion->delete();
+        }
 
         $negocio->delete();
 

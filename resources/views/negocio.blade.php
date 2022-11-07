@@ -1,91 +1,81 @@
 @extends('layouts.general')
 @section('title', $negocio->nombre . ' - TodoServy')
+
 @section('contenido')
+
     <div id="negocios_vue">
-
-        <header class="header header-sticky mb-4">
-            <div class="container-fluid">
-                <ul class="header-nav d-none d-md-flex" style="margin-left: auto; margin-right: auto;">
-                    <li class="nav-item" ><a class="nav-link" href="/administrador" style="text-decoration: underline">Administrador</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/listado-negocios">Listado Negocios</a></li>
-                    {{--                        <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>--}}
-                </ul>
-            </div>
-        </header>
-
 
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card mb-4 carta-individual">
+                        <div class="card card-negocio-individual mb-4 carta-individual">
                             <div style="display: flex">
                                 <h1 class="mb-0" v-text="negocio.nombre"></h1>
-                                <div class="mx-2 card-total-calificaciones">
-                                    <div>
-                                        <span v-text="promedio_calificaciones"></span>
-                                        <i class="fas fa-star mx-1" style="color: gold"></i>
-                                    </div>
-                                    <small v-text="total_calificaciones + ' reseñas'" style="font-size: 11px"></small>
-                                </div>
                             </div>
-                            <div style="text-align: center">
-                                <img :src="'../' + negocio.foto" alt="" style="max-width: 200px">
+                            <div class="my-3" style="text-align: center">
+                                <img :src="'../' + negocio.foto" alt="" class="img-negocio">
                             </div>
                             <div>
                                 <i class="cil-phone me-1"></i>
                                 <span v-text="negocio.telefono"> </span>
                                 <p v-text="negocio.acerca_de"></p>
                             </div>
-                            <div class="container-lg">
 
-                                <div class="tab-content rounded-bottom">
+                            <div class="body flex-grow-1 px-0">
+                                    <div class="container-lg px-0">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="header-review">
+                                                    <div style="display: flex; align-items: center">
+                                                        <h5 class="card-title mb-0"> Reseñas</h5>
+                                                        <div class="mx-2 card-total-calificaciones">
 
-                                    <div class="tab-pane p-5 active preview" role="tabpanel" id="preview-716">
-                                        <div class="header-review">
-                                            <div style="display: flex; align-items: center">
-                                                <h5 class="card-title"> Reseñas</h5>
-
-                                            </div>
-                                            <div style="display: flex; align-items: center" @click="abrirModalReview()">
-                                                <i class="cil-plus icon-agregar-review me-1"></i>
-                                                <span>Agregar reseña </span>
-
-                                            </div>
-
-                                        </div>
-                                        <template v-if="calificaciones.length === 0">
-
-                                            <div style="padding: 0 5px;">
-                                                <span style="color: #808080"> - El negocio aún no tiene calificaciones </span>
-                                            </div>
-
-                                        </template>
-                                        <template v-for="calificacion in calificaciones">
-                                            <div class="card card-review mb-2">
-                                                <div class="row">
-                                                    <div class="col-md-1 text-center" style="display: flex; align-items: center;">
-                                                        <img class="card-img" src="{{ asset('img/user.png') }}" alt="">
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title" v-text="calificacion.nombre"></h5>
-                                                            <p class="card-text" v-text="calificacion.comentario"></p>
+                                                            <span v-text="promedio_calificaciones"></span>
+                                                            <i class="fas fa-star mx-1" style="color: gold"></i>
+                                                            <span v-text="'(' + total_calificaciones +  (total_calificaciones > 1 ? ' reseñas)' : ' reseña)')" style="font-size: 11px; padding-top: 1px"></span>
                                                         </div>
+
                                                     </div>
-                                                    <div class="col-md-2 contenedor-estrellas">
-                                                        <star-rating :rating="calificacion.calificacion" :star-size="20" :read-only="true" :increment="0.01"> </star-rating>
+                                                    <div class="btn-agregar-calificacion" style="display: flex; align-items: center" @click="abrirModalReview()">
+                                                        <i class="cil-plus icon-agregar-review me-1"></i>
+                                                        <span class="agregar-calificacion">Agregar reseña </span>
                                                     </div>
 
                                                 </div>
+
+                                                <div class="btn-agregar-calificacion-v2 mb-2" style="display: flex; align-items: center" @click="abrirModalReview()">
+                                                    <i class="cil-plus icon-agregar-review me-1"></i>
+                                                    <span class="agregar-calificacion">Agregar reseña </span>
+                                                </div>
+
+                                                <template v-if="calificaciones.length === 0">
+                                                    <div style="padding: 0 5px;">
+                                                        <span style="color: #808080"> - El negocio aún no tiene calificaciones </span>
+                                                    </div>
+                                                </template>
+                                                <template v-for="calificacion in calificaciones">
+                                                    <div class="card card-negocios card-review mb-2" style="cursor: default">
+                                                        <div class="row">
+                                                            <div class="col-md-1 text-center" style="display: flex; align-items: center;">
+                                                                <img class="card-img" src="{{ asset('img/user.png') }}" alt="">
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title" v-text="calificacion.nombre"></h5>
+                                                                    <p class="card-text" v-text="calificacion.comentario"></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 contenedor-estrellas">
+                                                                <star-rating :rating="calificacion.calificacion" :star-size="20" :read-only="true" :increment="0.01"> </star-rating>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
                                             </div>
-                                        </template>
-
-
-
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
                         </div>
@@ -157,5 +147,4 @@
 
 
 @vite(['resources/js/vue/negocio.js'])
-@vite(['public/css/global_styles.css'])
 

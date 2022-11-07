@@ -36,6 +36,14 @@ body{
     border-top: 0;
 }
 
+.btn-crear-negocio-admin{
+    border-radius: 2px;
+    background-color: #1c79fe;
+    border-color: #1c79fe;
+    font-size: 13px;
+    padding: 5px 20px;
+}
+
 .btn-crear-negocio{
     width: 100%;
     border-radius: 2px;
@@ -69,7 +77,7 @@ a[href="#"]{
 }
 
 .icon-edit{
-    font-size: 22px;
+    font-size: 15px;
     color: #1c79fe;
 }
 
@@ -78,7 +86,7 @@ a[href="#"]{
 }
 
 .icon-delete{
-    font-size: 22px;
+    font-size: 15px;
     color: #f11818;
 }
 
@@ -150,6 +158,7 @@ a[href="#"]{
     display: flex;
     justify-content: space-between;
     padding: 0 5px;
+    margin-bottom: 0.6rem;
 }
 
 .icon-agregar-review{
@@ -158,8 +167,15 @@ a[href="#"]{
     border: 1px rgb(13, 202, 240) solid;
 }
 
+
 .card-review{
     padding: 20px 40px;
+}
+
+@media (max-width: 767px){
+    .card-review{
+        padding: 20px 0;
+    }
 }
 
 .contenedor-estrellas{
@@ -170,11 +186,103 @@ a[href="#"]{
 
 .card-total-calificaciones{
     /*border: 1px solid rgba(255, 0, 0, .5);*/
-    padding: 5px;
+    padding: 2px 10px;
     border-radius: 3px;
-    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.47);
-    display: inline-grid;
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
 }
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+.nav-link:hover{
+    color: #0094ff!important;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.75rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 3rem;
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.navbar-light .navbar-toggler {
+    color: #C4C4C4;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce){
+    .navbar-toggler {
+        transition: none;
+    }
+}
+
+.card-admin{
+    padding: 25px;
+    border-radius: 4px;
+    border: none;
+}
+
+.card-negocio-individual{
+    padding: 25px;
+    border-radius: 4px;
+    border: none;
+    cursor: default;
+}
+
+
+.table > :not(caption) > * > * {
+    padding: 0.5rem 1.5rem;
+    background-color: white;
+}
+table, th, td {
+    border: 1px solid #efefef;
+    border-collapse: collapse;
+    border-radius: 2px;
+}
+
+.card-negocios:hover{
+    background-color: rgb(246, 253, 255);
+    /*border: 1px;*/
+    box-shadow: 1px 1px 5px 1px rgba(18, 152, 182, 0.4);
+}
+
+.agregar-calificacion:hover{
+    color: #0DCAF0FF;
+    cursor: pointer;
+}
+
+.img-negocio{
+    object-fit: cover;
+    width: 100%;
+    max-height: 450px;
+    /*height:auto;*/
+    border-radius: 10px;
+}
+
+.btn-agregar-calificacion-v2{
+    display: none!important;
+}
+
+@media (max-width: 452px){
+    .btn-agregar-calificacion{
+        display: none!important;
+    }
+    .btn-agregar-calificacion-v2{
+        display: block!important;
+    }
+}
+
 
 
 

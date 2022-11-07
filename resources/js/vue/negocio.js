@@ -1,6 +1,7 @@
 import {createApp} from "vue/dist/vue.esm-bundler";
 import axios from "axios";
 import StarRating from 'vue-star-rating'
+import swal from "sweetalert";
 
 
 const app = createApp({
@@ -38,8 +39,7 @@ const app = createApp({
                 this.promedio_calificaciones = response.data.promedio_calificaciones;
 
             }).catch( error => {
-
-
+                swal('Error', 'No se han podido traer las calificaciones de los negocios', 'info');
             });
         },
 
@@ -61,8 +61,19 @@ const app = createApp({
                 $('#crearCalificacionForm')[0].reset();
                 $('#addReview').modal('hide');
             }).catch( error => {
+                const er = error.response.data.errors;
+                let mensaje = 'Error';
 
 
+                if( er.hasOwnProperty('nombre') ) {
+                    mensaje = er.nombre[0];
+                }else if( er.hasOwnProperty('comentario') ) {
+                    mensaje = er.comentario[0];
+                }else if( er.hasOwnProperty('calificacion') ) {
+                    mensaje = er.calificacion[0];
+                }
+
+                swal('Error', mensaje, 'info');
             });
         },
         prueba(){

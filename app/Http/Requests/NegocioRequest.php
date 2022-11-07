@@ -26,7 +26,7 @@ class NegocioRequest extends FormRequest
         return [
             'nombre' => 'required',
             'acerca_de' => 'required',
-            'telefono' => 'required|min:9',
+            'telefono' => 'required|digits:10',
             'foto' => 'required',
         ];
 
@@ -36,7 +36,7 @@ class NegocioRequest extends FormRequest
     {
         return [
             'telefono.required' => 'El teléfono es obligatorio',
-            'telefono.min' => 'El campo teléfono debe contener al menos 10 caracteres',
+            'telefono.digits' => 'El campo teléfono debe contener 10 caracteres',
             'nombre.required' => 'El campo nombre es obligatorio',
             'acerca_de.required' => 'El campo acerca de es obligatorio',
             'foto.required' => 'El campo foto es obligatorio',
