@@ -1,4 +1,5 @@
 @extends('layouts.general')
+@section('title', $negocio->nombre . ' - TodoServy')
 @section('contenido')
     <div id="negocios_vue">
 
@@ -18,8 +19,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-4 carta-individual">
-                            <div>
-                                <h1 v-text="negocio.nombre"></h1>
+                            <div style="display: flex">
+                                <h1 class="mb-0" v-text="negocio.nombre"></h1>
+                                <div class="mx-2 card-total-calificaciones">
+                                    <div>
+                                        <span v-text="promedio_calificaciones"></span>
+                                        <i class="fas fa-star mx-1" style="color: gold"></i>
+                                    </div>
+                                    <small v-text="total_calificaciones + ' reseñas'" style="font-size: 11px"></small>
+                                </div>
                             </div>
                             <div style="text-align: center">
                                 <img :src="'../' + negocio.foto" alt="" style="max-width: 200px">
@@ -35,7 +43,10 @@
 
                                     <div class="tab-pane p-5 active preview" role="tabpanel" id="preview-716">
                                         <div class="header-review">
-                                            <h5 class="card-title"> Reseñas</h5>
+                                            <div style="display: flex; align-items: center">
+                                                <h5 class="card-title"> Reseñas</h5>
+
+                                            </div>
                                             <div style="display: flex; align-items: center" @click="abrirModalReview()">
                                                 <i class="cil-plus icon-agregar-review me-1"></i>
                                                 <span>Agregar reseña </span>

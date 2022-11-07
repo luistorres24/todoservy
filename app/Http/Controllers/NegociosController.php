@@ -29,7 +29,18 @@ class NegociosController extends Controller
 
         $calificaciones = Calificacion::where('id_negocio', $request->id)->get();
 
-        return response()->json($calificaciones);
+        $total_calificaciones = 0;
+
+        foreach($calificaciones as $calificacion){
+            $total_calificaciones += $calificacion->calificacion;
+        }
+        $promedio = $total_calificaciones/count($calificaciones);
+
+        return response()->json([
+           'calificaciones' => $calificaciones,
+           'total_calificaciones' => count($calificaciones),
+           'promedio_calificaciones' => round($promedio,1),
+        ]);
 
     }
 

@@ -9,7 +9,8 @@
     <link href="{{ asset('coreui/css/style.css') }}?v=1" rel="stylesheet">
     <link href="{{ asset('coreui/vendors/@coreui/icons/css/free.min.css') }}?v=1" rel="stylesheet">
     <link href="{{ asset('css/global_styles.css') }}?v=1" rel="stylesheet">
-    <title>Reseñas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>@yield('title', 'Todoservy')</title>
 
 </head>
 

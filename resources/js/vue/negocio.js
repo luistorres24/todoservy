@@ -19,7 +19,8 @@ const app = createApp({
                 foto: negocio_foto,
             },
             calificaciones: [],
-            calificacio: 0,
+            total_calificaciones: 0,
+            promedio_calificaciones: 0,
 
         }
     },
@@ -32,7 +33,9 @@ const app = createApp({
                 }
             }).then( response => {
 
-                this.calificaciones = response.data;
+                this.calificaciones = response.data.calificaciones;
+                this.total_calificaciones = response.data.total_calificaciones;
+                this.promedio_calificaciones = response.data.promedio_calificaciones;
 
             }).catch( error => {
 
