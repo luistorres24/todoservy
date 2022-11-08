@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->bigInteger('telefono');
-            $table->string('acerca_de');
+            $table->text('acerca_de');
             $table->string('foto');
             $table->timestamps();
         });
