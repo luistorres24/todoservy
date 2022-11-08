@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('calificaciones', function (Blueprint $table) {
             $table->id();
             $table->integer('id_negocio');
-            $table->string('nombre_usuario');
+            $table->string('nombre');
             $table->text('comentario');
             $table->float('calificacion');
             $table->timestamps();
