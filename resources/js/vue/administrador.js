@@ -61,6 +61,7 @@ const app = createApp({
 
             // $('#editar_mensaje_form')[0].reset();
             axios.post('/crear-negocio', formulario).then( response => {
+                $('#crearNegocioForm')[0].reset();
                 this.traerNegocios();
                 $('#staticBackdrop').modal('hide');
             }).catch( error => {
